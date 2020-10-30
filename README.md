@@ -23,4 +23,4 @@ npm run serve
 ```
 
 
-VISIT the port in which the app is running and search away!
+VISIT the port in which the app is running on your favorite browser and search away!
