@@ -7,7 +7,9 @@
 ```
 git clone https://github.com/Thomatang/movie-finder.git
 ```
-
+```
+cd movie-finder
+```
 ```
 npm install
 ```
