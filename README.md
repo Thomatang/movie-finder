@@ -1,5 +1,8 @@
 # movie-finder
 
+## Built with:
+* VueJS 3
+* use of the Composition API instead of Options API
 
 
 ## Project setup
