@@ -18,6 +18,5 @@ export const useMovieApi = () => {
         state.loading = false;
       });
   });
-  console.log('STATE' + JSON.stringify(state))
   return state;
 };

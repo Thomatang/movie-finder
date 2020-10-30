@@ -1,10 +1,9 @@
 <template>
   <div class="movie">
     <h2>{{ movie.Title }}</h2>
-    <div>
+  <div>
       <img width="200" :alt="altText" :src="movie.Poster" />
     </div>
-    <p>{{ movie.Year }}</p>
   </div>
 </template>
 

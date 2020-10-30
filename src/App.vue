@@ -1,8 +1,7 @@
 <template>
   <div class="app">
-    <Header :title="'Movie Finder'" />
-    <Search :search="state.search" @search="handleSearch" />
-    <p class="intro">Sharing a few of our favourite movies</p>
+    <Header :title="'taxi cinema'" />
+    <Search :search="searchTerm" @search="handleSearch" />
     <router-view></router-view>
   </div>
 </template>
@@ -10,17 +9,39 @@
 <script>
   import Header from './components/Header.vue';
   import Search from './components/Search.vue';
-  import { useMovieApi } from './api/movie-api';
+  import { useStore } from 'vuex';
+  import { computed }  from 'vue';
   export default {
     name: 'app',
     components: { Header, Search},
     setup() {
-      const state = useMovieApi();
+      const store= useStore()
+      const movies = computed(function () {
+        return store.getters.movies
+      })
+
+      const loading = computed(function () {
+        return store.getters.loading
+      })
+      const searchTerm = computed(function () {
+        return store.getters.searchTerm
+      })
+
+      const moviesInDetail = computed(function () {
+        return store.getters.moviesInDetail
+      })
+
       return {
-        state,
+        movies,
+        moviesInDetail,
+        loading,
+        searchTerm,
         handleSearch(searchTerm) {
-          state.loading = true;
-          state.search = searchTerm;
+        store.dispatch("setLoadingStatus", false);
+        store.dispatch("setSearchTerm", searchTerm);
+        store.dispatch("emptyMovieList");
+        store.dispatch("emptyMoviesInDetail");
+        store.dispatch("getMovies", searchTerm);
         }
       };
     }
@@ -29,80 +50,22 @@
 
 <style>
   .app {
+    min-height: 100vh;
+    width: 100%;
     text-align: center;
-  }
-  .header {
-    background-color: #282c34;
-    height: 70px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-    padding: 20px;
-    cursor: pointer;
+    background: linear-gradient(to bottom right, #ffcd00, #fff);
+    align-items: center;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif
   }
-  .spinner {
-    height: 80px;
-    margin: auto;
-  }
-  .intro {
-    font-size: large;
-  }
-  /* new css for movie component */
-  * {
-    box-sizing: border-box;
-  }
-  .movies {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-  }
-  .header h2 {
-    margin: 0;
-  }
-  .add-movies {
-    text-align: center;
-  }
-  .add-movies button {
-    font-size: 16px;
-    padding: 8px;
-    margin: 0 10px 30px 10px;
-  }
+
   .movie {
     padding: 5px 25px 10px 25px;
     max-width: 25%;
   }
-  .errorMessage {
-    margin: auto;
-    font-weight: bold;
-    color: rgb(161, 15, 15);
-  }
-  .search {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 10px;
-  }
-  input[type="submit"] {
-    padding: 5px;
-    background-color: transparent;
-    color: black;
-    border: 1px solid black;
-    width: 80px;
-    margin-left: 5px;
-    cursor: pointer;
-  }
-  input[type="submit"]:hover {
-    background-color: #282c34;
-    color: antiquewhite;
-  }
-  .search > input[type="text"]{
-    width: 40%;
-    min-width: 170px;
-  }
+
   @media screen and (min-width: 694px) and (max-width: 915px) {
     .movie {
       max-width: 33%;
