@@ -1,6 +1,13 @@
 # movie-finder
 
+
+
 ## Project setup
+
+```
+git clone https://github.com/Thomatang/movie-finder.git
+```
+
 ```
 npm install
 ```
