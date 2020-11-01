@@ -1,6 +1,18 @@
 # movie-finder
 
+## Built with:
+* VueJS 3
+* use of the Composition API instead of Options API
+
+
 ## Project setup
+
+```
+git clone https://github.com/Thomatang/movie-finder.git
+```
+```
+cd movie-finder
+```
 ```
 npm install
 ```
@@ -10,15 +22,5 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+VISIT the port in which the app is running on your favorite browser and search away!
