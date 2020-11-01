@@ -6,11 +6,12 @@
 </template>
 
 <script>
-  export default {
-    name: 'Header',
-    props: ['title'],
-    setup() {}
+export default {
+  name: 'Header',
+  props: ['title'],
+  setup() {
   }
+}
 </script>
 
 <style>
@@ -31,11 +32,11 @@
   color: black;
 }
 
-  @media screen and (max-width: 651px) {
-    .App-header {
-      width: 100%;
-      margin-bottom: 0;
-      font-size: 30px;
-    }
+@media screen and (max-width: 651px) {
+  .App-header {
+    width: 100%;
+    margin-bottom: 0;
+    font-size: 30px;
   }
+}
 </style>

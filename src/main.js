@@ -1,5 +1,5 @@
-import { createApp } from 'vue'
-import { createRouter, createWebHistory } from 'vue-router'
+import {createApp} from 'vue'
+import {createRouter, createWebHistory} from 'vue-router'
 import store from "./store";
 import App from './App.vue';
 
@@ -8,7 +8,7 @@ import MovieList from './components/MovieList'
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        { path: '/movies', component: MovieList }
+        {path: '/movies', component: MovieList}
     ]
 });
 
